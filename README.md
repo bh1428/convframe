@@ -50,9 +50,9 @@ In case you need configuration for your converter, you can implement / override 
         pass
 ```
 
-The first method `get_options_dialog` is an easy way of adding configuration options via GUI elements to your converter application. See `convframetemplate.py` for a basic usage example.
+The first method `get_options_dialog` is an easy way of adding configuration options via GUI elements to your converter application. See [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for a basic usage example.
 
-The second method `reset_options` hooks into the `[Reset]` button. If user wants to reset the application to the initial state you can als reset you own options dialog. Again, see `convframetemplate.py` for an example.
+The second method `reset_options` hooks into the `[Reset]` button. If user wants to reset the application to the initial state you can als reset you own options dialog. Again, see [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for an example.
 
 ## Remarks
 Some remarks:
