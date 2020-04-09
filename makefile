@@ -1,0 +1,102 @@
+#
+# makefile for Visual Studio Code (VSC) based Python projects
+#
+
+# Version: 2020.4.9
+
+# Make targets (can be used when calling make):
+#   venv                  create new virtual environment, if the
+#                         *requirements.txt files already exists they will be
+#                         used, otherwise new ones will be created
+#   upgrade_requirements  upgrade *requirements.txt files without installing
+#   upgrade_venv          upgrade *requirements.txt and install packages
+#   sync                  synchronize venv with *requirements.txt (default target)
+#   info                  show list of installed packages in the venv
+#   clean                 remove virtual environment
+
+# names (directories & files)
+PACKAGE := convframe
+VENV_DIR := venv
+VENV_CLEAN_DIRS := .mypy_cache __pycache__
+PRECLEAN_DIRS := build dist $(PACKAGE).egg-info
+PRECLEAN_FILES :=
+POSTCLEAN_DIRS := build $(PACKAGE).egg-info
+POSTCLEAN_FILES :=
+EXTRA_CLEAN_FILES := setup.py.bck
+
+# binaries / executables
+CMD := "C:\Windows\System32\cmd.exe"
+PYTHON := "C:\Program Files\Python38\python.exe"
+VENV := .\$(VENV_DIR)\Scripts
+VENV_ACTIVATE := $(VENV)\activate.bat
+VENV_PYTHON := $(VENV)\python.exe
+PIP := $(VENV)\pip.exe
+PIP_SYNC := $(VENV)\pip-sync.exe
+PIP_COMPILE := $(VENV)\pip-compile.exe
+PYSIDE2_UIC := $(VENV)\pyside2-uic.exe
+PYSIDE2_RCC := $(VENV)\pyside2-rcc.exe
+QT_DESIGNER := $(VENV_DIR)\Lib\site-packages\PySide2\designer.exe
+
+all: build
+
+$(VENV_ACTIVATE):
+	$(PYTHON) -m venv $(VENV_DIR)
+	$(VENV_PYTHON) -m pip install --upgrade pip
+	$(PIP) install pip-tools
+    ifeq (,$(wildcard requirements.txt))
+		$(PIP_COMPILE) requirements.in
+    endif
+    ifeq (,$(wildcard dev-requirements.txt))
+		$(PIP_COMPILE) dev-requirements.in
+    endif
+	$(PIP_SYNC) dev-requirements.txt
+	$(PIP) install -e .
+
+requirements.txt: $(VENV_ACTIVATE) requirements.in
+	$(PIP_COMPILE) requirements.in
+
+dev-requirements.txt: $(VENV_ACTIVATE) dev-requirements.in requirements.txt
+	$(PIP_COMPILE) dev-requirements.in
+
+.PHONY: upgrade_requirements
+upgrade_requirements: $(VENV_ACTIVATE)
+	$(PIP_COMPILE) requirements.in --upgrade
+	$(PIP_COMPILE) dev-requirements.in --upgrade
+
+.PHONY: sync
+sync: $(VENV_ACTIVATE) dev-requirements.txt
+	$(PIP_SYNC) dev-requirements.txt
+	$(PIP) install -e .
+
+.PHONY: upgrade_venv
+upgrade_venv: upgrade_requirements sync
+
+.PHONY: info
+info: $(VENV_ACTIVATE)
+	$(PIP) list
+
+.PHONY: clean
+clean:
+	$(CMD) /c "FOR %%F IN ($(VENV_DIR) $(VENV_CLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
+
+.PHONY: qt_designer
+qt_designer: venv
+	$(QT_DESIGNER) ui/maindialog.ui
+
+$(PACKAGE)/ui_maindialog.py: ui/maindialog.ui
+	$(PYSIDE2_UIC) --from-imports -o $(PACKAGE)/ui_maindialog.py ui/maindialog.ui
+
+$(PACKAGE)/maindialog_rc.py: maindialog.qrc images/python-icon.svg
+	$(PYSIDE2_RCC) -o $(PACKAGE)/maindialog_rc.py maindialog.qrc
+
+.PHONY: run
+run: $(VENV_ACTIVATE)
+	$(VENV_PYTHON) convframetemplate.py
+
+.PHONY: build
+build: $(VENV_ACTIVATE) $(PACKAGE)/ui_maindialog.py $(PACKAGE)/maindialog_rc.py
+	$(CMD) /c "FOR %%F IN ($(PRECLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
+	$(CMD) /c "FOR %%F IN ($(PRECLEAN_FILES)) DO IF EXIST %%F del %%F"
+	$(VENV_PYTHON) setup.py bdist_wheel
+	$(CMD) /c "FOR %%F IN ($(POSTCLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
+	$(CMD) /c "FOR %%F IN ($(POSTCLEAN_FILES)) DO IF EXIST %%F del %%F"
