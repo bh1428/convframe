@@ -181,6 +181,9 @@ class Ui_MainDialog(object):
 
         self.retranslateUi(MainDialog)
 
+        self.pb_convert.setDefault(True)
+
+
         QMetaObject.connectSlotsByName(MainDialog)
     # setupUi
 
