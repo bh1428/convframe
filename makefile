@@ -1,10 +1,10 @@
 #
-# makefile for Visual Studio Code (VSC) based Python projects
+# makefile for convframe package
 #
 
-# Version: 2020.4.9
+# Version: 2020.4.11
 
-# Make targets (can be used when calling make):
+# Make targets:
 #   venv                  create new virtual environment, if the
 #                         *requirements.txt files already exists they will be
 #                         used, otherwise new ones will be created
@@ -13,6 +13,9 @@
 #   sync                  synchronize venv with *requirements.txt (default target)
 #   info                  show list of installed packages in the venv
 #   clean                 remove virtual environment
+#   qt_designer           start QT Designer
+#   run                   execute example template
+#   build                 build package (.whl file)
 
 # names (directories & files)
 PACKAGE := convframe
