@@ -8,8 +8,9 @@
 #   venv                  create new virtual environment, if the
 #                         *requirements.txt files already exists they will be
 #                         used, otherwise new ones will be created
+#   upgrade_pip_tools     upgrade the pip-tools package
 #   upgrade_requirements  upgrade *requirements.txt files without installing
-#   upgrade_venv          upgrade *requirements.txt and install packages
+#   upgrade_venv          upgrade pip-tools, *requirements.txt and install packages
 #   sync                  synchronize venv with *requirements.txt (default target)
 #   info                  show list of installed packages in the venv
 #   clean                 remove virtual environment
@@ -42,6 +43,8 @@ QT_DESIGNER := $(VENV_DIR)\Lib\site-packages\PySide2\designer.exe
 
 all: build
 
+.NOTPARALLEL:
+
 $(VENV_ACTIVATE):
 	$(PYTHON) -m venv $(VENV_DIR)
 	$(VENV_PYTHON) -m pip install --upgrade pip
@@ -61,6 +64,11 @@ requirements.txt: $(VENV_ACTIVATE) requirements.in
 dev-requirements.txt: $(VENV_ACTIVATE) dev-requirements.in requirements.txt
 	$(PIP_COMPILE) dev-requirements.in
 
+.PHONY: upgrade_pip_tools
+upgrade_pip_tools: $(VENV_ACTIVATE)
+	$(VENV_PYTHON) -m pip install --upgrade pip
+	$(PIP) install pip-tools --upgrade
+
 .PHONY: upgrade_requirements
 upgrade_requirements: $(VENV_ACTIVATE)
 	$(PIP_COMPILE) requirements.in --upgrade
@@ -72,7 +80,7 @@ sync: $(VENV_ACTIVATE) dev-requirements.txt
 	$(PIP) install -e .
 
 .PHONY: upgrade_venv
-upgrade_venv: upgrade_requirements sync
+upgrade_venv: upgrade_pip_tools upgrade_requirements sync
 
 .PHONY: info
 info: $(VENV_ACTIVATE)
