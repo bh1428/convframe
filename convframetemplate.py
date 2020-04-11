@@ -1,10 +1,10 @@
 """Example of an application using the ConverterFramework"""
 # TODO: change description in above line
 
-from convframe import ConverterApp, Converter
+import convframe
 from PySide2 import QtWidgets
 
-__version__ = "2020.4.9"
+__version__ = "2020.4.11"
 
 #
 # Name the application
@@ -17,8 +17,8 @@ COPYRIGHT = "(c) Copyright 2020 by Ben Hattem"
 # file filters to be used for file import and export
 #
 # TODO: define wildcards for import / export of files
-IMPORT_FILTER = ";;".join((ConverterApp.default_import_filter, "Text files (*.txt)"))
-EXPORT_FILTER = ConverterApp.default_export_filter
+IMPORT_FILTER = ";;".join((convframe.ConverterApp.default_import_filter, "Text files (*.txt)"))
+EXPORT_FILTER = convframe.ConverterApp.default_export_filter
 
 #
 # possible file encodings for the file export
@@ -39,7 +39,7 @@ ABOUT_TEXT = "<br>".join(
 #
 # TODO: rename converter class to something meaningful
 # TODO: remove example code
-class ExampleConverter(Converter):
+class ExampleConverter(convframe.Converter):
     """TODO: describe the converter class"""
 
     def get_options_dialog(self):
@@ -115,7 +115,7 @@ class ExampleConverter(Converter):
 def main():
     """start the Converter Framework based app"""
     # TODO: adapt main application call if required"""
-    ConverterApp(
+    convframe.ConverterApp(
         APPNAME,
         ABOUT_TEXT,
         converter=ExampleConverter,
