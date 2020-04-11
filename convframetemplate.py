@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Example of an application using the ConverterFramework"""
 # TODO: change description in above line
 
