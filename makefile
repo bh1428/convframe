@@ -91,7 +91,7 @@ clean:
 	$(CMD) /c "FOR %%F IN ($(VENV_DIR) $(VENV_CLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
 
 .PHONY: qt_designer
-qt_designer: venv
+qt_designer: $(VENV_ACTIVATE)
 	$(QT_DESIGNER) ui/maindialog.ui
 
 $(PACKAGE)/ui_maindialog.py: ui/maindialog.ui
