@@ -2,12 +2,9 @@
 # makefile for convframe package
 #
 
-# Version: 2020.4.16
+# Version: 2020.5.30
 
 # Make targets:
-#   venv                  create new virtual environment, if the
-#                         *requirements.txt files already exists they will be
-#                         used, otherwise new ones will be created
 #   upgrade_pip_tools     upgrade pip and the pip-tools package
 #   upgrade_requirements  upgrade *requirements.txt files without installing
 #   upgrade_venv          upgrade pip-tools, *requirements.txt and install packages
