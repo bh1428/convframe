@@ -52,10 +52,9 @@ In case you need configuration for your converter, you can implement / override 
 
 The first method `get_options_dialog` is an easy way of adding configuration options via GUI elements to your converter application. See [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for a basic usage example.
 
-The second method `reset_options` hooks into the `[Reset]` button. If user wants to reset the application to the initial state you can als reset you own options dialog. Again, see [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for an example.
+The second method `reset_options` hooks into the `[Reset]` button. If a user wants to reset the application to the initial state you can also reset your own options dialog. Again, see [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for an example.
 
 ## Remarks
-Some remarks:
-  * The framework is based on [PySide2](https://pypi.org/project/PySide2/) which has its own licensing conditions. Please pay close attention to those, depending on your application you may need a license from them.
-  * The project is primarily meant for Microsoft Windows. Although it might probably run on other operating systems, this is not tested.
+  * The framework is based on [PySide2](https://pypi.org/project/PySide2/) which has its own licensing conditions. Please pay close attention to those, depending on your application (and its distribution) you may need a license from them.
+  * The project is primarily meant for Microsoft Windows. It will probably run on other operating systems, but this is not tested.
   * The development workflow for the package is based on a combination of [Visual Studio Code](https://code.visualstudio.com/) with the [Python extension](https://code.visualstudio.com/docs/languages/python), Python virtual environments (using [pip-tools](https://pypi.org/project/pip-tools/)) and `make` (if you need `make` for Windows: use the make from [GnuWin](http://gnuwin32.sourceforge.net/)).
