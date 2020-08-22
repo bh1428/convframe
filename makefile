@@ -106,5 +106,8 @@ build: $(VENV_ACTIVATE) $(PACKAGE)/ui_maindialog.py $(PACKAGE)/maindialog_rc.py
 	$(CMD) /c "FOR %%F IN ($(PRECLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
 	$(CMD) /c "FOR %%F IN ($(PRECLEAN_FILES)) DO IF EXIST %%F del %%F"
 	$(VENV_PYTHON) setup.py bdist_wheel
+	$(VENV_PYTHON) -c "import sys; import datetime; print(f'Python {sys.version}'); print(f'Build time: {datetime.datetime.now().astimezone()}\n')" > build_info.txt
+	$(PIP) list >> build_info.txt
+	$(CMD) /c copy build_info.txt dist
 	$(CMD) /c "FOR %%F IN ($(POSTCLEAN_DIRS)) DO IF EXIST %%F rmdir /q /s %%F"
 	$(CMD) /c "FOR %%F IN ($(POSTCLEAN_FILES)) DO IF EXIST %%F del %%F"
