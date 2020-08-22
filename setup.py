@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """setup.py for convframe package"""
 from setuptools import find_packages, setup
 from typing import List

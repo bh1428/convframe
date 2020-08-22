@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """main dialog for converterframework
 
 converterframework is a PyQt based framework for simple text converters

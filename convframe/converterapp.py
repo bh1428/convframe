@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """main entry point for converterframework
 
 converterapp is a PyQt based framework for simple text converters
