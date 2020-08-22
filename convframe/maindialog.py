@@ -147,6 +147,16 @@ class MainDialog(QtWidgets.QDialog, Ui_MainDialog):
                     + "which is not usable as a converter configuration dialog.",
                 )
 
+        # signals and slots
+        self.pb_copy_from_clipb.clicked.connect(self.on_pb_copy_from_clipb_clicked)
+        self.pb_import_from_file.clicked.connect(self.on_pb_import_from_file_clicked)
+        self.pb_reset.clicked.connect(self.on_pb_reset_clicked)
+        self.pb_convert.clicked.connect(self.on_pb_convert_clicked)
+        self.pb_copy_to_clipb.clicked.connect(self.on_pb_copy_to_clipb_clicked)
+        self.pb_export_to_file.clicked.connect(self.on_pb_export_to_file_clicked)
+        self.pb_about.clicked.connect(self.on_pb_about_clicked)
+        self.pb_exit.clicked.connect(self.on_pb_exit_clicked)
+
         # make sure dialog options are set to the correct state
         self.on_pb_reset_clicked()
 
@@ -190,12 +200,10 @@ class MainDialog(QtWidgets.QDialog, Ui_MainDialog):
                 self.show_error("File I/O Error", f'Could not read from file:\n"{filename}"')
         self.pte_input_text.setPlainText(new_input)
 
-    @QtCore.Slot()
     def on_pb_copy_from_clipb_clicked(self):
         """Handle click on the "Copy from Clipboard" button."""
         self.pte_input_text.setPlainText(self.clipboard.text())
 
-    @QtCore.Slot()
     def on_pb_import_from_file_clicked(self):
         """Handle click on the "Import from File" button."""
         # get the filename(s) and read the file(s)
@@ -205,7 +213,6 @@ class MainDialog(QtWidgets.QDialog, Ui_MainDialog):
         if filenames:
             self.import_files(filenames)
 
-    @QtCore.Slot()
     def on_pb_reset_clicked(self):
         """Handle click on the "Reset" button."""
         # reset in- and output text areas
@@ -216,17 +223,14 @@ class MainDialog(QtWidgets.QDialog, Ui_MainDialog):
         if self.options:
             self.converter.reset_options()
 
-    @QtCore.Slot()
     def on_pb_convert_clicked(self):
         """Handle click on the "Convert" button."""
         self.pte_output_text.setPlainText(self.converter.convert(str(self.pte_input_text.toPlainText())))
 
-    @QtCore.Slot()
     def on_pb_copy_to_clipb_clicked(self):
         """Handle click on the "Copy to Clipboard" button."""
         self.clipboard.setText(self.pte_output_text.toPlainText())
 
-    @QtCore.Slot()
     def on_pb_export_to_file_clicked(self):
         """Handle click on the "Export to File" button."""
         # write output area to a file
@@ -243,12 +247,10 @@ class MainDialog(QtWidgets.QDialog, Ui_MainDialog):
             except IOError:
                 self.show_error("File I/O Error", f'Could not write to file:\n"{out_filename}"')
 
-    @QtCore.Slot()
     def on_pb_about_clicked(self):
         """Handle click on the "About" button."""
         QtWidgets.QMessageBox.about(self, "About", self.about_text)
 
-    @QtCore.Slot()
     def on_pb_exit_clicked(self):
         """Handle click on the "Exit" button."""
         self.close()
