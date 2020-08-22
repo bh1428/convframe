@@ -36,6 +36,7 @@ ABOUT_TEXT = "<br>".join(
     (f"<b>{APPNAME}</b> V{__version__}", COPYRIGHT, "", "Description of the application goes here.",)
 )
 
+
 #
 # conversion class
 #

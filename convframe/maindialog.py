@@ -5,7 +5,6 @@
 converterframework is a PyQt based framework for simple text converters
 """
 
-# import os
 import pathlib as pl
 
 from PySide2 import QtCore, QtWidgets
