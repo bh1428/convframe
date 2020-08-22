@@ -6,8 +6,8 @@ from setuptools import find_packages, setup
 from convframe import __version__
 
 
-def get_install_requires(requirements_file="requirements.txt"):
-    """Get requirements from a requirements.txt file"""
+def get_install_requires(requirements_file="requirements.in"):
+    """get requirements from a file"""
     requirements = []
     with open(requirements_file) as fh_in:
         for line in fh_in:
