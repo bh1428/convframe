@@ -7,7 +7,7 @@ converterframework is a PyQt based framework for simple text converters
 
 import pathlib as pl
 
-from PySide2 import QtCore, QtWidgets
+from PySide6 import QtCore, QtWidgets
 
 from .ui_maindialog import Ui_MainDialog
 

@@ -28,16 +28,16 @@ EXTRA_CLEAN_FILES := setup.py.bck
 
 # binaries / executables
 CMD := "C:\Windows\System32\cmd.exe"
-PYTHON := "C:\Program Files\Python39\python.exe"
+PYTHON := "C:\Program Files\Python310\python.exe"
 VENV := .\$(VENV_DIR)\Scripts
 VENV_ACTIVATE := $(VENV)\activate.bat
 VENV_PYTHON := $(VENV)\python.exe
 PIP := $(VENV)\pip.exe
 PIP_SYNC := $(VENV)\pip-sync.exe
 PIP_COMPILE := $(VENV)\pip-compile.exe
-PYSIDE2_UIC := $(VENV)\pyside2-uic.exe
-PYSIDE2_RCC := $(VENV)\pyside2-rcc.exe
-QT_DESIGNER := $(VENV_DIR)\Lib\site-packages\PySide2\designer.exe
+PYSIDE6_UIC := $(VENV)\pyside6-uic.exe
+PYSIDE6_RCC := $(VENV)\pyside6-rcc.exe
+QT_DESIGNER := $(VENV_DIR)\Lib\site-packages\PySide6\designer.exe
 
 all: build
 
@@ -95,10 +95,10 @@ qt_designer: $(VENV_ACTIVATE)
 	$(QT_DESIGNER) ui/maindialog.ui
 
 $(PACKAGE)/ui_maindialog.py: ui/maindialog.ui
-	$(PYSIDE2_UIC) --from-imports -o $(PACKAGE)/ui_maindialog.py ui/maindialog.ui
+	$(PYSIDE6_UIC) --star-imports --from-imports -o $(PACKAGE)/ui_maindialog.py ui/maindialog.ui
 
 $(PACKAGE)/maindialog_rc.py: maindialog.qrc images/python-icon.svg
-	$(PYSIDE2_RCC) -o $(PACKAGE)/maindialog_rc.py maindialog.qrc
+	$(PYSIDE6_RCC) -o $(PACKAGE)/maindialog_rc.py maindialog.qrc
 
 .PHONY: run
 run: $(VENV_ACTIVATE)

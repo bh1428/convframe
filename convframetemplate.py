@@ -4,16 +4,16 @@
 # TODO: change description in above line
 
 import convframe
-from PySide2 import QtWidgets
+from PySide6 import QtWidgets
 
-__version__ = "2020.4.11"
+__version__ = "2021.11.21"
 
 #
 # Name the application
 #
 # TODO: change name of the application and copyright
 APPNAME = "Application Name"
-COPYRIGHT = "(c) Copyright 2020 by Ben Hattem"
+COPYRIGHT = "(c) Copyright 2020-2021 by Ben Hattem"
 
 #
 # file filters to be used for file import and export
@@ -33,7 +33,12 @@ FILE_ENCODINGS = ["utf-8", "cp1252", "iso-8859-1", "utf-16"]
 #
 # TODO: change about text
 ABOUT_TEXT = "<br>".join(
-    (f"<b>{APPNAME}</b> V{__version__}", COPYRIGHT, "", "Description of the application goes here.",)
+    (
+        f"<b>{APPNAME}</b> V{__version__}",
+        COPYRIGHT,
+        "",
+        "Description of the application goes here.",
+    )
 )
 
 

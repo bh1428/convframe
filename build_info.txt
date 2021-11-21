@@ -1,5 +1,5 @@
-Python 3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)]
-Build time: 2021-11-21 14:23:50.804306+01:00
+Python 3.10.0 (tags/v3.10.0:b494f59, Oct  4 2021, 19:00:18) [MSC v.1929 64 bit (AMD64)]
+Build time: 2021-11-21 15:20:07.876357+01:00
 
 Package           Version    Editable project location
 ----------------- ---------- -------------------------
@@ -22,11 +22,11 @@ platformdirs      2.4.0
 pycodestyle       2.8.0
 pyflakes          2.4.0
 pylint            2.11.1
-PySide2           5.15.2
+PySide6           6.2.1
 regex             2021.11.10
 rope              0.21.1
-setuptools        58.1.0
-shiboken2         5.15.2
+setuptools        57.4.0
+shiboken6         6.2.1
 toml              0.10.2
 tomli             1.2.2
 typing_extensions 4.0.0

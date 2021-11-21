@@ -6,7 +6,7 @@ converterapp is a PyQt based framework for simple text converters
 """
 import sys
 
-from PySide2 import QtWidgets
+from PySide6 import QtWidgets
 
 from .common import __version__
 from .maindialog import MainDialog, Converter
@@ -18,7 +18,7 @@ class ConverterApp:
     default_about_text = "<br>".join(
         (
             f"<b>ConverterFrameWork</b> V{__version__}",
-            "(c) Copyright 2006-2020 by Ben Hattem (benghattem@gmail.com)",
+            "(c) Copyright 2006-2021 by Ben Hattem (benghattem@gmail.com)",
             "",
         )
     )
@@ -49,7 +49,12 @@ class ConverterApp:
         # initialize and start the application
         self.app = QtWidgets.QApplication(sys.argv)
         self.dialog = MainDialog(
-            self.app_name, self.about_text, self.converter, self.import_filter, self.export_filter, self.file_encodings,
+            self.app_name,
+            self.about_text,
+            self.converter,
+            self.import_filter,
+            self.export_filter,
+            self.file_encodings,
         )
         self.dialog.show()
         sys.exit(self.app.exec_())

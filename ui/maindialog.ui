@@ -10,6 +10,12 @@
     <height>450</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Tahoma</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
