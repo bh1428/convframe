@@ -1,4 +1,4 @@
-# convframe - PySide2 based framework for text conversion applications
+# convframe - PySide6 based framework for text conversion applications
 
 Sometime you may need a simple text converter like:
   * Strip comments
@@ -55,6 +55,6 @@ The first method `get_options_dialog` is an easy way of adding configuration opt
 The second method `reset_options` hooks into the `[Reset]` button. If a user wants to reset the application to the initial state you can also reset your own options dialog. Again, see [convframetemplate.py](https://github.com/bh1428/convframe/blob/master/convframetemplate.py) for an example.
 
 ## Remarks
-  * The framework is based on [PySide2](https://pypi.org/project/PySide2/) which has its own licensing conditions. Please pay close attention to those, depending on your application (and its distribution) you may need a license from them.
+  * The framework is based on [PySide6](https://pypi.org/project/PySide6/) which has its own licensing conditions. Please pay close attention to those, depending on your application (and its distribution) you may need a license from them.
   * The project is primarily meant for Microsoft Windows. It will probably run on other operating systems, but this is not tested.
   * The development workflow for the package is based on a combination of [Visual Studio Code](https://code.visualstudio.com/) with the [Python extension](https://code.visualstudio.com/docs/languages/python), Python virtual environments (using [pip-tools](https://pypi.org/project/pip-tools/)) and `make` (if you need `make` for Windows: use the make from [GnuWin](http://gnuwin32.sourceforge.net/)).
