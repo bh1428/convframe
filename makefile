@@ -2,7 +2,7 @@
 # makefile for convframe package
 #
 
-# Version: 2020.5.30
+# Version: 2021.11.21
 
 # Make targets:
 #   upgrade_pip_tools     upgrade pip and the pip-tools package
@@ -10,6 +10,7 @@
 #   upgrade_venv          upgrade pip-tools, *requirements.txt and install packages
 #   sync                  synchronize venv with *requirements.txt (default target)
 #   info                  show list of installed packages in the venv
+#   init                  initialize a new virtual environment
 #   clean                 remove virtual environment
 #   qt_designer           start QT Designer
 #   run                   execute example template
@@ -27,7 +28,7 @@ EXTRA_CLEAN_FILES := setup.py.bck
 
 # binaries / executables
 CMD := "C:\Windows\System32\cmd.exe"
-PYTHON := "C:\Program Files\Python38\python.exe"
+PYTHON := "C:\Program Files\Python39\python.exe"
 VENV := .\$(VENV_DIR)\Scripts
 VENV_ACTIVATE := $(VENV)\activate.bat
 VENV_PYTHON := $(VENV)\python.exe
@@ -41,6 +42,8 @@ QT_DESIGNER := $(VENV_DIR)\Lib\site-packages\PySide2\designer.exe
 all: build
 
 .NOTPARALLEL:
+
+init: $(VENV_ACTIVATE)
 
 $(VENV_ACTIVATE):
 	$(PYTHON) -m venv $(VENV_DIR)

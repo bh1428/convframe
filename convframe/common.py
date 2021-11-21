@@ -2,4 +2,4 @@
 # -*- coding: utf-8 -*-
 """PyQt based framework for simple text converters - common"""
 
-__version__ = "2020.8.22"
+__version__ = "2021.11.21"

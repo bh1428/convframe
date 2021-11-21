@@ -1,35 +1,34 @@
-Python 3.8.5 (tags/v3.8.5:580fbb0, Jul 20 2020, 15:57:54) [MSC v.1924 64 bit (AMD64)]
-Build time: 2020-08-22 13:36:42.614756+02:00
+Python 3.9.9 (tags/v3.9.9:ccb0e6a, Nov 15 2021, 18:08:50) [MSC v.1929 64 bit (AMD64)]
+Build time: 2021-11-21 14:23:50.804306+01:00
 
-Package           Version   Location
------------------ --------- ---------------------
-appdirs           1.4.4
-astroid           2.4.2
-attrs             20.1.0
-black             19.10b0
-click             7.1.2
-colorama          0.4.3
-convframe         2020.8.22 e:\projects\convframe
-flake8            3.8.3
-isort             5.4.2
-lazy-object-proxy 1.4.3
+Package           Version    Editable project location
+----------------- ---------- -------------------------
+astroid           2.8.5
+black             21.11b1
+click             8.0.3
+colorama          0.4.4
+convframe         2021.11.21 e:\projects\convframe
+flake8            4.0.1
+isort             5.10.1
+lazy-object-proxy 1.6.0
 mccabe            0.6.1
-mypy              0.782
+mypy              0.910
 mypy-extensions   0.4.3
-pathspec          0.8.0
-pip               20.2.2
-pip-tools         5.3.1
-pycodestyle       2.6.0
-pyflakes          2.2.0
-pylint            2.6.0
-PySide2           5.15.0
-regex             2020.7.14
-rope              0.17.0
-setuptools        47.1.0
-shiboken2         5.15.0
-six               1.15.0
-toml              0.10.1
-typed-ast         1.4.1
-typing-extensions 3.7.4.2
-wheel             0.35.1
-wrapt             1.12.1
+pathspec          0.9.0
+pep517            0.12.0
+pip               21.3.1
+pip-tools         6.4.0
+platformdirs      2.4.0
+pycodestyle       2.8.0
+pyflakes          2.4.0
+pylint            2.11.1
+PySide2           5.15.2
+regex             2021.11.10
+rope              0.21.1
+setuptools        58.1.0
+shiboken2         5.15.2
+toml              0.10.2
+tomli             1.2.2
+typing_extensions 4.0.0
+wheel             0.37.0
+wrapt             1.13.3
